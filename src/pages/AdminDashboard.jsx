@@ -35,8 +35,8 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import { useNavigate } from 'react-router-dom';
 // import * as XLSX from 'xlsx';
-import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
+// import jsPDF from 'jspdf';
+// import autoTable from 'jspdf-autotable';
 
 
 const AdminDashboard = () => {
@@ -235,7 +235,7 @@ const AdminDashboard = () => {
         <Box>
           <Button variant="outlined" onClick={() => setOpenAdminPasswordDialog(true)}>Change Admin Password</Button>
           {/* <Button variant="contained" sx={{ ml: 2 }} onClick={handleExportExcel}>Export Excel</Button> */}
-          <Button variant="contained" sx={{ ml: 2 }} onClick={handleExportPDF}>Export PDF</Button>
+          {/* <Button variant="contained" sx={{ ml: 2 }} onClick={handleExportPDF}>Export PDF</Button> */}
         </Box>
         <Button variant="contained" color="error" onClick={async () => {
           if (window.confirm('Clear all non-admin users?')) {
