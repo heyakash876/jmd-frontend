@@ -9,7 +9,7 @@ import {
   Paper,
   Link,
 } from '@mui/material';
-import Logo from '../assets/JMD.png'; // Make sure logo is travel-related
+import Logo from '../assets/JMD.png';
 
 const Login = () => {
   const [passportNumber, setPassportNumber] = useState('');
@@ -17,6 +17,7 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -26,10 +27,17 @@ const Login = () => {
         password,
       });
 
-      localStorage.setItem('token', res.data.token);
-      localStorage.setItem('user', JSON.stringify(res.data.user));
+      const user = res.data.user;
 
-      navigate('/dashboard');
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('user', JSON.stringify(user));
+
+      // Redirect based on user role
+      if (user.isAdmin) {
+        navigate('/admin/dashboard');
+      } else {
+        navigate('/dashboard');
+      }
     } catch (err) {
       console.error(err);
       setError(err.response?.data?.msg || 'Login failed');
@@ -132,20 +140,6 @@ const Login = () => {
           >
             Log In
           </Button>
-
-          <Box mt={3} textAlign="center">
-            <Typography variant="body2">
-              Don’t have an account?{' '}
-              <Link href="/register" underline="hover">
-                Register here
-              </Link>
-            </Typography>
-            <Typography variant="body2" mt={1}>
-              <Link href="/admin/login" underline="hover">
-                Login as Admin
-              </Link>
-            </Typography>
-          </Box>
         </form>
       </Paper>
     </Box>
