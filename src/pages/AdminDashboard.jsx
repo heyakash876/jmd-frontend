@@ -169,19 +169,19 @@ const AdminDashboard = () => {
   //   XLSX.writeFile(workbook, "Users.xlsx");
   // };
 
-  const handleExportPDF = () => {
-    const doc = new jsPDF();
-    autoTable(doc, {
-      head: [['Name', 'Passport Number', 'Status', 'Country']],
-      body: users.map(user => [
-        `${user.name} ${user.lastName}`,
-        user.passportNumber,
-        user.status,
-        user.visaCountry
-      ])
-    });
-    doc.save("Users.pdf");
-  };
+  // const handleExportPDF = () => {
+  //   const doc = new jsPDF();
+  //   autoTable(doc, {
+  //     head: [['Name', 'Passport Number', 'Status', 'Country']],
+  //     body: users.map(user => [
+  //       `${user.name} ${user.lastName}`,
+  //       user.passportNumber,
+  //       user.status,
+  //       user.visaCountry
+  //     ])
+  //   });
+  //   doc.save("Users.pdf");
+  // };
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/');
