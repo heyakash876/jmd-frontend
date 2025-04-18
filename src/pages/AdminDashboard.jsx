@@ -34,7 +34,7 @@ import LockResetIcon from '@mui/icons-material/LockReset';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import { useNavigate } from 'react-router-dom';
-import * as XLSX from 'xlsx';
+// import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
@@ -162,12 +162,12 @@ const AdminDashboard = () => {
     navigate('/admin/register-user');
   };
 
-  const handleExportExcel = () => {
-    const worksheet = XLSX.utils.json_to_sheet(users);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Users");
-    XLSX.writeFile(workbook, "Users.xlsx");
-  };
+  // const handleExportExcel = () => {
+  //   const worksheet = XLSX.utils.json_to_sheet(users);
+  //   const workbook = XLSX.utils.book_new();
+  //   XLSX.utils.book_append_sheet(workbook, worksheet, "Users");
+  //   XLSX.writeFile(workbook, "Users.xlsx");
+  // };
 
   const handleExportPDF = () => {
     const doc = new jsPDF();
@@ -234,7 +234,7 @@ const AdminDashboard = () => {
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2, flexWrap: 'wrap', gap: 2 }}>
         <Box>
           <Button variant="outlined" onClick={() => setOpenAdminPasswordDialog(true)}>Change Admin Password</Button>
-          <Button variant="contained" sx={{ ml: 2 }} onClick={handleExportExcel}>Export Excel</Button>
+          {/* <Button variant="contained" sx={{ ml: 2 }} onClick={handleExportExcel}>Export Excel</Button> */}
           <Button variant="contained" sx={{ ml: 2 }} onClick={handleExportPDF}>Export PDF</Button>
         </Box>
         <Button variant="contained" color="error" onClick={async () => {
